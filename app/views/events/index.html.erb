@@ -13,12 +13,16 @@
                 <td>タイトル</td>
                 <td>金額</td>
                 <td>日時</td>
+                <td>詳細</td>
+                <td>編集</td>
             </tr>
             <% @events.each do |event| %>
             <tr>
                 <td><%= event.title %></td>
                 <td><%= event.amount %>円</td>
                 <td><%= event.day %></td>
+                <td><%= link_to "詳細を見る" ,event%></td>
+                <td><%= link_to "編集する" ,[:edit ,event]%></td>
             </tr>
             <% end %>
         </table>
