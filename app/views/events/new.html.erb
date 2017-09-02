@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <h2>Event新規作成画面</h2>
+        <%= form_for @event do |f| %>
+        タイトル:<%= f.text_field :title %>
+        金額:<%= f.text_field :amount %>
+        日時:<%= f.date_select :day,start_year:2016,end_year:Time.now.year,use_month_numbers: true %>
+        記録済み:<%= f.check_box :recorded %>
+        <%= f.submit %>
+        <% end %>
+    </body>
+</html>

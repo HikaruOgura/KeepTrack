@@ -6,6 +6,12 @@
     </head>
     <body>
         <h1>top page</h1>
+            <% if flash.notice %>
+                <p class="notice">
+                    <%= flash.notice %>
+                </p>
+            <% end %>
+
         <p>wallet:<%= @money.wallet %></p>
         <p>bank:<%= @money.bank %></p>
         <table id=event一覧>
@@ -13,20 +19,24 @@
                 <td>タイトル</td>
                 <td>金額</td>
                 <td>日時</td>
+                <td>記録済み</td>
                 <td>詳細</td>
                 <td>編集</td>
-                <td>記録済み</td>
+                <td>削除</td>
             </tr>
             <% @events.each do |event| %>
             <tr>
                 <td><%= event.title %></td>
                 <td><%= event.amount %>円</td>
                 <td><%= event.day %></td>
+                <td><%= event.recorded%></td>
                 <td><%= link_to "詳細を見る" ,event%></td>
                 <td><%= link_to "編集する" ,[:edit ,event]%></td>
-                <td><%= event.recorded%></td>
+                <td><%= link_to "削除する" ,event,method: :delete,data:{confirm: "本当に削除しますか？"}%></td>
+
             </tr>
             <% end %>
         </table>
+        <p><%= link_to "新しいeventを作成する" ,new_event_path %></p>
     </body>
 </html>
