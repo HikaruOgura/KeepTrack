@@ -12,8 +12,9 @@
                 </p>
             <% end %>
 
-        <p>wallet:<%= @money.wallet %></p>
-        <p>bank:<%= @money.bank %></p>
+        <p>wallet:<%= @money.wallet %>円</p>
+        <p>bank:<%= @money.bank %>円</p>
+        <p><%= link_to "持ち金の修正をする" ,[:edit ,@money] %></p>
         <table id=event一覧>
             <tr>
                 <td>タイトル</td>

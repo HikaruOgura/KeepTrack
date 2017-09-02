@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <h2>持ち金修正画面</h2>
+        <%= form_for @money do |f| %>
+        wallet:<%= f.text_field :wallet %>
+        bank:<%= f.text_field :bank %>
+        <%= f.submit %>
+        <% end %>
+    </body>
+</html>
