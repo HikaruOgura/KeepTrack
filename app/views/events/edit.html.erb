@@ -10,6 +10,7 @@
         タイトル:<%= f.text_field :title %>
         金額:<%= f.text_field :amount %>
         日時:<%= f.date_select :day,start_year:2016,end_year:Time.now.year,use_month_numbers: true %>
+        記録済み:<%= f.check_box :recorded %>
         <%= f.submit %>
         <% end %>
     </body>

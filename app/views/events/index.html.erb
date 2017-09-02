@@ -15,6 +15,7 @@
                 <td>日時</td>
                 <td>詳細</td>
                 <td>編集</td>
+                <td>記録済み</td>
             </tr>
             <% @events.each do |event| %>
             <tr>
@@ -23,6 +24,7 @@
                 <td><%= event.day %></td>
                 <td><%= link_to "詳細を見る" ,event%></td>
                 <td><%= link_to "編集する" ,[:edit ,event]%></td>
+                <td><%= event.recorded%></td>
             </tr>
             <% end %>
         </table>

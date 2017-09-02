@@ -11,7 +11,7 @@ class EventsController < ApplicationController
     end
     def update
         @event=Event.find(params[:id])
-        @event.assign_attributes(params[:event].permit(:title, :amount, :day))
+        @event.assign_attributes(params[:event].permit(:title, :amount, :day,:recorded))
         @event.save
         @money=Money.find(1)
         @events=Event.all
