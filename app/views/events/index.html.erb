@@ -5,62 +5,122 @@
         <title></title>
     </head>
     <body>
-        <h1>top page</h1>
+        <div class="header">
+            <h1>KeepTrack</h1>
+        </div>
             <% if flash.notice %>
                 <p class="notice">
                     <%= flash.notice %>
                 </p>
             <% end %>
 
-        <p>wallet:<%= @money.wallet %>円</p>
-        <p>bank:<%= @money.bank %>円</p>
-        <p><%= link_to "持ち金の修正をする" ,[:edit ,@money] %></p>
-        <table id=recorded_event>
-            <tr>
-                <td>タイトル</td>
-                <td>金額</td>
-                <td>日時</td>
-                <td>記録済み</td>
-                <td>詳細</td>
-                <td>編集</td>
-                <td>削除</td>
-            </tr>
-            <% @events_recorded.each do |event| %>
-            <tr>
-                <td><%= event.title %></td>
-                <td><%= event.amount %>円</td>
-                <td><%= event.day %></td>
-                <td><%= event.recorded%></td>
-                <td><%= link_to "詳細を見る" ,event%></td>
-                <td><%= link_to "編集する" ,[:edit ,event]%></td>
-                <td><%= link_to "削除する" ,event,method: :delete,data:{confirm: "本当に削除しますか？"}%></td>
+        <div id="side_menu">
+            <div class="bar">
+                <p class="bar_title">side menu</p>
+            </div>
+            <div class="money_box">
+                <div class="bar">
+                    <p class="bar_title">所持金</p>
+                </div>
+                <p>wallet:<%= @money.wallet %>円</p>
+                <p>bank:<%= @money.bank %>円</p>
+            </div>
+            <div class="menu_bar">
+                <div class="bar">
+                    <p class="bar_title">メニューバー</p>
+                </div>
+                <p><%= link_to "所持金の修正をする" ,[:edit ,@money] %></p>
+                <p id="create_event"><%= link_to "新しいeventを作成する" ,new_event_path %></p>
+            </div>
+            <div class="balance">
+                <div class="bar">
+                    <p class="bar_title">収支</p>
+                </div>
+                <div class="last_month">
+                    <div class="bar">
+                        <p class="bar_title">先月の収支</p>
+                    </div>
+                    <p>先月の収支がここに表示される</p>
+                </div>
+                <div class="this_month">
+                    <div class="bar">
+                        <p class="bar_title">今月の収支</p>
+                    </div>
+                    <p>今月のこれまでの収支がここに表示される</p>
+                </div>
+            </div>
 
-            </tr>
-            <% end %>
-        </table>
-        <table id=unrecorded_event>
-            <tr>
-                <td>タイトル</td>
-                <td>金額</td>
-                <td>日時</td>
-                <td>記録済み</td>
-                <td>詳細</td>
-                <td>編集</td>
-                <td>削除</td>
-            </tr>
-            <% @events_unrecorded.each do |event| %>
-            <tr>
-                <td><%= event.title %></td>
-                <td><%= event.amount %>円</td>
-                <td><%= event.day %></td>
-                <td><%= event.recorded%></td>
-                <td><%= link_to "詳細を見る" ,event%></td>
-                <td><%= link_to "編集する" ,[:edit ,event]%></td>
-                <td><%= link_to "削除する" ,event,method: :delete,data:{confirm: "本当に削除しますか？"}%></td>
 
-            </tr>
-            <% end %>
-        </table>
-        <p><%= link_to "新しいeventを作成する" ,new_event_path %></p>
+        </div>
+        <div class="main">
+            <div class="bar">
+                <p class="bar_title">event一覧</p>
+            </div>
+            <div class="main_right">
+
+                <table id=recorded_event>
+                    <thead>
+                        <tr>
+                            <td  colspan="6" class="title">記録済みevent</th>
+                        </tr>
+                        <tr>
+                            <th>タイトル</th>
+                            <th>金額</th>
+                            <th>日時</th>
+                            <th>詳細</th>
+                            <th>編集</th>
+                            <th>削除</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @events_recorded.each do |event| %>
+                        <tr>
+                            <td><%= event.title %></td>
+                            <td><%= event.amount %>円</td>
+                            <td><%= event.day %></td>
+                            <td><%= link_to "詳細を見る" ,event%></td>
+                            <td><%= link_to "編集する" ,[:edit ,event]%></td>
+                            <td><%= link_to "削除する" ,event,method: :delete,data:{confirm: "本当に削除しますか？"}%></td>
+
+                        </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>
+            <div class="main_left">
+
+                <table id=unrecorded_event>
+                    <thead>
+                        <tr>
+                            <td colspan="6" class="title">予定event</th>
+                        </tr>
+                        <tr>
+                            <th>タイトル</th>
+                            <th>金額</th>
+                            <th>日時</th>
+                            <th>詳細</th>
+                            <th>編集</th>
+                            <th>削除</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @events_unrecorded.each do |event| %>
+                        <tr>
+                            <td><%= event.title %></td>
+                            <td><%= event.amount %>円</td>
+                            <td><%= event.day %></td>
+                            <td><%= link_to "詳細を見る" ,event%></td>
+                            <td><%= link_to "編集する" ,[:edit ,event]%></td>
+                            <td><%= link_to "削除する" ,event,method: :delete,data:{confirm: "本当に削除しますか？"}%></td>
+
+                        </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>
+
+
+        </div>
+
     </body>
 </html>
