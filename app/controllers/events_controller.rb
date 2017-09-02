@@ -1,7 +1,8 @@
 class EventsController < ApplicationController
     def index
         @money=Money.find(1)
-        @events=Event.all
+        @events_unrecorded=Event.where(recorded: 0).order("day")
+        @events_recorded=Event.where(recorded: true).order("day")
     end
 
     def show

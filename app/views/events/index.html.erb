@@ -15,7 +15,7 @@
         <p>wallet:<%= @money.wallet %>円</p>
         <p>bank:<%= @money.bank %>円</p>
         <p><%= link_to "持ち金の修正をする" ,[:edit ,@money] %></p>
-        <table id=event一覧>
+        <table id=recorded_event>
             <tr>
                 <td>タイトル</td>
                 <td>金額</td>
@@ -25,7 +25,30 @@
                 <td>編集</td>
                 <td>削除</td>
             </tr>
-            <% @events.each do |event| %>
+            <% @events_recorded.each do |event| %>
+            <tr>
+                <td><%= event.title %></td>
+                <td><%= event.amount %>円</td>
+                <td><%= event.day %></td>
+                <td><%= event.recorded%></td>
+                <td><%= link_to "詳細を見る" ,event%></td>
+                <td><%= link_to "編集する" ,[:edit ,event]%></td>
+                <td><%= link_to "削除する" ,event,method: :delete,data:{confirm: "本当に削除しますか？"}%></td>
+
+            </tr>
+            <% end %>
+        </table>
+        <table id=unrecorded_event>
+            <tr>
+                <td>タイトル</td>
+                <td>金額</td>
+                <td>日時</td>
+                <td>記録済み</td>
+                <td>詳細</td>
+                <td>編集</td>
+                <td>削除</td>
+            </tr>
+            <% @events_unrecorded.each do |event| %>
             <tr>
                 <td><%= event.title %></td>
                 <td><%= event.amount %>円</td>
