@@ -13,3 +13,25 @@
  *= require_tree .
  *= require_self
  */
+
+table#recorded_event{
+    background-color: rgb(41, 232, 140);
+    border-style: solid;
+    border-color: rgb(14, 13, 12);
+    position: absolute;
+    right: 100px;
+
+}
+table#unrecorded_event{
+    background-color: rgb(41, 232, 140);
+    border-style: solid;
+    border-color: rgb(14, 13, 12);
+    position: absolute;
+    right: 800px;
+
+}
+p#create_event{
+    position:absolute;
+    top: 500px;
+    right:650px;
+}
