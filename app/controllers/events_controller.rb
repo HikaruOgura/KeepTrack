@@ -39,7 +39,21 @@ class EventsController < ApplicationController
                     @money.save
                 end
             end
-            @events=Event.all
+
+            @events_unrecorded=Event.where(recorded: 0).order("day")
+            @events_recorded=Event.where(recorded: true).order(day: :desc)
+            @ThisMonth=Time.now.month
+            @LastMonth=Time.now.last_month.month
+            @ThisMonth_sum=0
+            @LastMonth_sum=0
+            Event.all.each do |event|
+                if event.day.month==@ThisMonth
+                    @ThisMonth_sum+=event.amount
+                elsif event.day.month==@LastMonth
+                    @LastMonth_sum+=event.amount
+                else
+                end
+            end
             render :index
         else
             render "new"
@@ -64,7 +78,20 @@ class EventsController < ApplicationController
                     @money.save
                 end
             end
-            @events=Event.all
+            @events_unrecorded=Event.where(recorded: 0).order("day")
+            @events_recorded=Event.where(recorded: true).order(day: :desc)
+            @ThisMonth=Time.now.month
+            @LastMonth=Time.now.last_month.month
+            @ThisMonth_sum=0
+            @LastMonth_sum=0
+            Event.all.each do |event|
+                if event.day.month==@ThisMonth
+                    @ThisMonth_sum+=event.amount
+                elsif event.day.month==@LastMonth
+                    @LastMonth_sum+=event.amount
+                else
+                end
+            end
             redirect_to  :root,notice: "新しいeventを登録しました"
         else
             render "new"
@@ -73,14 +100,30 @@ class EventsController < ApplicationController
     def destroy
         @money=Money.find(1)
         @event=Event.find(params[:id])
-        if @event.debit==false
-            @money.wallet-=@event.amount
-            @money.save
-        else
-            @money.bank-=@event.amount
-            @money.save
+        if @event.recorded==true
+            if @event.debit==false
+                @money.wallet-=@event.amount
+                @money.save
+            else
+                @money.bank-=@event.amount
+                @money.save
+            end
         end
         @event.destroy
+        @events_unrecorded=Event.where(recorded: 0).order("day")
+        @events_recorded=Event.where(recorded: true).order(day: :desc)
+        @ThisMonth=Time.now.month
+        @LastMonth=Time.now.last_month.month
+        @ThisMonth_sum=0
+        @LastMonth_sum=0
+        Event.all.each do |event|
+            if event.day.month==@ThisMonth
+                @ThisMonth_sum+=event.amount
+            elsif event.day.month==@LastMonth
+                @LastMonth_sum+=event.amount
+            else
+            end
+        end
         redirect_to :root,notice: "eventを削除しました"
 
     end
