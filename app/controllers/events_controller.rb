@@ -1,20 +1,6 @@
 class EventsController < ApplicationController
     def index
-        @money=Money.find(1)
-        @events_unrecorded=Event.where(recorded: 0).order("day")
-        @events_recorded=Event.where(recorded: true).order(day: :desc)
-        @ThisMonth=Time.now.month
-        @LastMonth=Time.now.last_month.month
-        @ThisMonth_sum=0
-        @LastMonth_sum=0
-        Event.all.each do |event|
-            if event.day.month==@ThisMonth
-                @ThisMonth_sum+=event.amount
-            elsif event.day.month==@LastMonth
-                @LastMonth_sum+=event.amount
-            else
-            end
-        end
+        before_index
     end
 
     def show
@@ -30,30 +16,8 @@ class EventsController < ApplicationController
         @event.assign_attributes(params[:event].permit(:title, :amount, :day,:recorded))
         @money=Money.find(1)
         if @event.save
-            if @event.recorded==true
-                if @event.debit==false
-                    @money.wallet+=@event.amount
-                    @money.save
-                else
-                    @money.bank+=@event.amount
-                    @money.save
-                end
-            end
-
-            @events_unrecorded=Event.where(recorded: 0).order("day")
-            @events_recorded=Event.where(recorded: true).order(day: :desc)
-            @ThisMonth=Time.now.month
-            @LastMonth=Time.now.last_month.month
-            @ThisMonth_sum=0
-            @LastMonth_sum=0
-            Event.all.each do |event|
-                if event.day.month==@ThisMonth
-                    @ThisMonth_sum+=event.amount
-                elsif event.day.month==@LastMonth
-                    @LastMonth_sum+=event.amount
-                else
-                end
-            end
+            update_money(@event,@money)
+            before_index
             render :index
         else
             render "new"
@@ -69,29 +33,8 @@ class EventsController < ApplicationController
         @event=Event.new(params[:event].permit(:title, :amount, :day,:recorded))
         @money=Money.find(1)
         if @event.save
-            if @event.recorded==true
-                if @event.debit==false
-                    @money.wallet+=@event.amount
-                    @money.save
-                else
-                    @money.bank+=@event.amount
-                    @money.save
-                end
-            end
-            @events_unrecorded=Event.where(recorded: 0).order("day")
-            @events_recorded=Event.where(recorded: true).order(day: :desc)
-            @ThisMonth=Time.now.month
-            @LastMonth=Time.now.last_month.month
-            @ThisMonth_sum=0
-            @LastMonth_sum=0
-            Event.all.each do |event|
-                if event.day.month==@ThisMonth
-                    @ThisMonth_sum+=event.amount
-                elsif event.day.month==@LastMonth
-                    @LastMonth_sum+=event.amount
-                else
-                end
-            end
+            update_money(@event,@money)
+            before_index
             redirect_to  :root,notice: "新しいeventを登録しました"
         else
             render "new"
@@ -100,16 +43,15 @@ class EventsController < ApplicationController
     def destroy
         @money=Money.find(1)
         @event=Event.find(params[:id])
-        if @event.recorded==true
-            if @event.debit==false
-                @money.wallet-=@event.amount
-                @money.save
-            else
-                @money.bank-=@event.amount
-                @money.save
-            end
-        end
+        rollback_money(@event,@money)
         @event.destroy
+        before_index
+        redirect_to :root,notice: "eventを削除しました"
+    end
+
+    private
+    def before_index
+        @money=Money.find(1)
         @events_unrecorded=Event.where(recorded: 0).order("day")
         @events_recorded=Event.where(recorded: true).order(day: :desc)
         @ThisMonth=Time.now.month
@@ -124,7 +66,27 @@ class EventsController < ApplicationController
             else
             end
         end
-        redirect_to :root,notice: "eventを削除しました"
-
+    end
+    def update_money(event,money)
+        if event.recorded==true
+            if event.debit==false
+                money.wallet+=event.amount
+                money.save
+            else
+                money.bank+=event.amount
+                money.save
+            end
+        end
+    end
+    def rollback_money(event,money)
+        if event.recorded==true
+            if event.debit==false
+                money.wallet-=event.amount
+                money.save
+            else
+                money.bank-=event.amount
+                money.save
+            end
+        end
     end
 end
