@@ -2,7 +2,20 @@ class EventsController < ApplicationController
     def index
         @money=Money.find(1)
         @events_unrecorded=Event.where(recorded: 0).order("day")
-        @events_recorded=Event.where(recorded: true).order("day")
+        @events_recorded=Event.where(recorded: true).order(day: :desc)
+        @ThisMonth=Time.now.month
+        @LastMonth=Time.now.last_month.month
+        @ThisMonth_sum=0
+        @LastMonth_sum=0
+        Event.all.each do |event|
+            if event.day.month==@ThisMonth
+                @ThisMonth_sum+=event.amount
+            elsif event.day.month==@LastMonth
+                @LastMonth_sum+=event.amount
+            else
+
+            end
+        end
     end
 
     def show
