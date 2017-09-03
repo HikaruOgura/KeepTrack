@@ -13,7 +13,6 @@ class EventsController < ApplicationController
             elsif event.day.month==@LastMonth
                 @LastMonth_sum+=event.amount
             else
-
             end
         end
     end
@@ -29,8 +28,17 @@ class EventsController < ApplicationController
     def update
         @event=Event.find(params[:id])
         @event.assign_attributes(params[:event].permit(:title, :amount, :day,:recorded))
+        @money=Money.find(1)
         if @event.save
-            @money=Money.find(1)
+            if @event.recorded==true
+                if @event.debit==false
+                    @money.wallet+=@event.amount
+                    @money.save
+                else
+                    @money.bank+=@event.amount
+                    @money.save
+                end
+            end
             @events=Event.all
             render :index
         else
@@ -45,8 +53,17 @@ class EventsController < ApplicationController
 
     def create
         @event=Event.new(params[:event].permit(:title, :amount, :day,:recorded))
+        @money=Money.find(1)
         if @event.save
-            @money=Money.find(1)
+            if @event.recorded==true
+                if @event.debit==false
+                    @money.wallet+=@event.amount
+                    @money.save
+                else
+                    @money.bank+=@event.amount
+                    @money.save
+                end
+            end
             @events=Event.all
             redirect_to  :root,notice: "新しいeventを登録しました"
         else
@@ -54,7 +71,15 @@ class EventsController < ApplicationController
         end
     end
     def destroy
+        @money=Money.find(1)
         @event=Event.find(params[:id])
+        if @event.debit==false
+            @money.wallet-=@event.amount
+            @money.save
+        else
+            @money.bank-=@event.amount
+            @money.save
+        end
         @event.destroy
         redirect_to :root,notice: "eventを削除しました"
 
