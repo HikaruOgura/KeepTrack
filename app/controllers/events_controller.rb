@@ -56,13 +56,23 @@ class EventsController < ApplicationController
         @events_recorded=Event.where(recorded: true).order(day: :desc)
         @ThisMonth=Time.now.month
         @LastMonth=Time.now.last_month.month
-        @ThisMonth_sum=0
-        @LastMonth_sum=0
+        @ThisMonth_income=0
+        @ThisMonth_spending=0
+        @LastMonth_spending=0
+        @LastMonth_income=0
         Event.all.each do |event|
             if event.day.month==@ThisMonth
-                @ThisMonth_sum+=event.amount
+                if event.amount > 0
+                    @ThisMonth_income+=event.amount
+                else
+                    @ThisMonth_spending+=event.amount
+                end
             elsif event.day.month==@LastMonth
-                @LastMonth_sum+=event.amount
+                if event.amount > 0
+                    @LastMonth_income+=event.amount
+                else
+                    @LastMonth_spending+=event.amount
+                end
             else
             end
         end

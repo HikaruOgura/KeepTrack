@@ -5,9 +5,6 @@
         <title></title>
     </head>
     <body>
-        <div class="header">
-            <h1>KeepTrack</h1>
-        </div>
             <% if flash.notice %>
                 <p class="notice">
                     <%= flash.notice %>
@@ -22,8 +19,8 @@
                 <div class="bar">
                     <p class="bar_title">所持金</p>
                 </div>
-                <p>wallet:<%= @money.wallet %>円</p>
-                <p>bank:<%= @money.bank %>円</p>
+                <p>手持ち:<%= @money.wallet %>円</p>
+                <p>銀行:<%= @money.bank %>円</p>
             </div>
             <div class="menu_bar">
                 <div class="bar">
@@ -40,13 +37,17 @@
                     <div class="bar">
                         <p class="bar_title">先月の収支</p>
                     </div>
-                    <p><%= @LastMonth_sum %>円</p>
+                    <p>収入:<%= @LastMonth_income %>円</p>
+                    <p>支出:<%= -@LastMonth_spending %>円</p>
+                    <p>合計:<%= @LastMonth_income + @LastMonth_spending %>円</p>
                 </div>
                 <div class="this_month">
                     <div class="bar">
                         <p class="bar_title">今月の収支(予定)</p>
                     </div>
-                    <p><%= @ThisMonth_sum %>円</p>
+                    <p>収入:<%= @ThisMonth_income %>円</p>
+                    <p>支出:<%= -@ThisMonth_spending %>円</p>
+                    <p>合計:<%= @ThisMonth_income + @ThisMonth_spending %>円</p>
                 </div>
             </div>
 
