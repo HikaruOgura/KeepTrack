@@ -16,12 +16,13 @@
 body{
     background-color: rgb(111, 246, 136);
 }
+/*table*/
 table{
     position: relative;
     width: 95%;
     margin: 0 auto;
     border: solid;
-    top: 5%;
+    top: 0%;
     border-collapse: collapse;
     background-color: white;
 }
@@ -37,14 +38,23 @@ td.title{
 th{
     background-color:rgb(147, 153, 146);
 }
+/*main*/
+div.main{
+    position: absolute;
+    left: 270px;
+    height:600px;
+    width: 1150px;
+    background-color: rgb(96, 227, 228);
+    border: solid;
 
-
+}
 div.main_left{
     position: relative;
     width: 50%;
     left:0%;
     top: -90%;
     height: 90%;
+    /*background-color: white;*/
 
 }
 div.main_right{
@@ -53,24 +63,18 @@ div.main_right{
     left:50%;
     top: 0%;
     height: 90%;
+    /*background-color: blue;*/
 
 }
+/*side*/
 div#side_menu{
     background-color: rgb(107, 235, 219);
     width: 250px;
-    height: 800px;
+    height: 790px;
     border: solid;
     position: absolute;
 }
-div.main{
-    position: absolute;
-    left: 270px;
-    height:800px;
-    width: 1150px;
-    background-color: rgb(96, 227, 228);
-    border: solid;
 
-}
 div.menu_bar{
     background-color: rgb(171, 247, 26);
     width: 95%;
@@ -105,8 +109,18 @@ div.this_month{
     margin: 0 auto;
     margin-bottom: 10%;
     border: solid;
-
 }
+/*footer*/
+div.footer{
+    border: solid;
+    background-color: white;
+    position: absolute;
+    top: 620px;
+    left: 270px;
+    width: 1150px;
+    height: 179px;
+}
+/*bar*/
 div.bar{
     background-color: rgb(61, 74, 69);
 }
