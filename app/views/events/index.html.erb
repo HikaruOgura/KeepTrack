@@ -5,6 +5,7 @@
         <title></title>
     </head>
     <body>
+
         <div id="side_menu">
             <div class="bar">
                 <p class="bar_title">side menu</p>
@@ -117,6 +118,43 @@
                 <p class="bar_title">footer</p>
             </div>
         </div>
+
+        <div id="modal-main">
+            <p>必要があれば編集して記録しましょう</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>タイトル</th>
+                        <th>金額</th>
+                        <th>日時</th>
+                        <th>編集</th>
+                        <th>記録</th>
+                        <th>削除</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @events_should_recorded.each do |event| %>
+                    <tr>
+                        <td><%= event.title %></td>
+                        <td><%= event.amount %>円</td>
+                        <td><%= event.day %></td>
+                        <td><%= link_to "編集する" ,[:edit ,event]%></td>
+                        <td><%= link_to "記録する" ,"/record/#{event.id}",method: :post%></td>
+                        <td><%= link_to "削除する" ,event,method: :delete,data:{confirm: "本当に削除しますか？"}%></td>
+
+                    </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="contents">
+            <p><a id="modal-open">【クリックでモーダルウィンドウを開きます。】</a></p>
+            <p class="page-txt">
+                にゃんご
+            </p>
+        </div>
+
 
     </body>
 </html>

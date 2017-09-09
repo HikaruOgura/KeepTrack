@@ -48,10 +48,20 @@ class EventsController < ApplicationController
         before_index
         redirect_to :root,notice: "eventを削除しました"
     end
+    def record
+        @event=Event.find(params[:id])
+        @money=Money.find(1)
+        update_money(@event,@money)
+        @event.recorded=true
+        @event.save
+        before_index
+        redirect_to :root
+    end
 
     private
     def before_index
         @money=Money.find(1)
+        @events_should_recorded=Event.where(day: Time.now.last_year .. Time.now).where(recorded: 0).order("day")
         @events_unrecorded=Event.where(recorded: 0).order("day")
         @events_recorded=Event.where(recorded: true).order(day: :desc)
         @ThisMonth=Time.now.month
