@@ -19,7 +19,7 @@
 $(function(){
 
   //テキストリンクをクリックしたら
- $("#modal-open").click(function(){
+ $(window).load(function(){
       //body内の最後に<div id="modal-bg"></div>を挿入
      $("body").append('<div id="modal-bg"></div>');
 

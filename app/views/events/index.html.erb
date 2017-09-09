@@ -120,7 +120,7 @@
         </div>
 
         <div id="modal-main">
-            <p>必要があれば編集して記録しましょう</p>
+            <p>予定日時を過ぎた未記録のeventが<%= @events_should_recorded.load.count %>件あります</p>
             <table>
                 <thead>
                     <tr>
@@ -147,14 +147,6 @@
                 </tbody>
             </table>
         </div>
-
-        <div id="contents">
-            <p><a id="modal-open">【クリックでモーダルウィンドウを開きます。】</a></p>
-            <p class="page-txt">
-                にゃんご
-            </p>
-        </div>
-
 
     </body>
 </html>
