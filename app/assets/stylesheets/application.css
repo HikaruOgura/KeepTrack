@@ -30,6 +30,9 @@ td,th{
     text-align: center;
     border: solid;
     border-color: black;
+    table-layout:fixed;
+    width: 110px;
+
 }
 td.title{
     background-color: rgb(61, 74, 69);
@@ -38,11 +41,27 @@ td.title{
 th{
     background-color:rgb(147, 153, 146);
 }
+
+thead.unrecorded,tbody.unrecorded{
+    display:block;
+}
+tbody.unrecorded{
+    overflow-y:scroll;
+    height:284px;
+}
+thead.should,tbody.should{
+    display:block;
+}
+tbody.should{
+    overflow-y:scroll;
+    height:148px;
+}
+
 /*main*/
 div.main{
     position: absolute;
     left: 270px;
-    height:600px;
+    height:400px;
     width: 1150px;
     background-color: rgb(96, 227, 228);
     border: solid;
@@ -115,10 +134,10 @@ div.footer{
     border: solid;
     background-color: white;
     position: absolute;
-    top: 620px;
+    top: 420px;
     left: 270px;
     width: 1150px;
-    height: 179px;
+    height: 350px;
 }
 /*bar*/
 div.bar{
@@ -145,7 +164,7 @@ p.bar_title{
 /* モーダル コンテンツエリア */
 #modal-main {
     display: none;
-    width: 500px;
+    width: 700px;
     height: 300px;
     margin: 0;
     padding: 0;
@@ -163,5 +182,9 @@ p.bar_title{
     position:fixed;
     top:0;
     left:0;
-            z-index: 1;
+    z-index: 1;
+}
+/*その他*/
+#message{
+    text-align: center;
 }

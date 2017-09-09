@@ -54,8 +54,8 @@
             </div>
             <div class="main_right">
 
-                <table id=recorded_event>
-                    <thead>
+                <table class="recorded">
+                    <thead class="recorded">
                         <tr>
                             <td  colspan="4" class="title">記録済みevent</th>
                         </tr>
@@ -66,7 +66,7 @@
                             <th>削除</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="recorded">
                         <% count=0 %>
                         <% @events_recorded.each do |event| %>
                         <% count=count+1 %>
@@ -76,7 +76,7 @@
                             <td><%= event.day.strftime("%-m月%-d日") %></td>
                             <td><%= link_to "削除する" ,event,method: :delete,data:{confirm: "本当に削除しますか？"}%></td>
                         </tr>
-                        <% if count==17 %>
+                        <% if count==10 %>
                             <% break %>
                         <% end %>
                         <% end %>
@@ -85,8 +85,8 @@
             </div>
             <div class="main_left">
 
-                <table id=unrecorded_event>
-                    <thead>
+                <table class="unrecorded">
+                    <thead class="unrecorded">
                         <tr>
                             <td colspan="5" class="title">予定event</th>
                         </tr>
@@ -98,7 +98,7 @@
                             <th>削除</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="unrecorded">
                         <% @events_unrecorded.each do |event| %>
                         <tr>
                             <td><%= event.title %></td>
@@ -120,9 +120,9 @@
         </div>
 
         <div id="modal-main">
-            <p>予定日時を過ぎた未記録のeventが<%= @events_should_recorded.load.count %>件あります</p>
-            <table>
-                <thead>
+            <p id=message>予定日時を過ぎた未記録のeventが<%= @events_should_recorded.load.count %>件あります</p>
+            <table class="should">
+                <thead class="should">
                     <tr>
                         <th>タイトル</th>
                         <th>金額</th>
@@ -132,7 +132,7 @@
                         <th>削除</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="should">
                     <% @events_should_recorded.each do |event| %>
                     <tr>
                         <td><%= event.title %></td>
