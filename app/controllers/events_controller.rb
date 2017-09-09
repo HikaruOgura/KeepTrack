@@ -51,8 +51,8 @@ class EventsController < ApplicationController
     def record
         @event=Event.find(params[:id])
         @money=Money.find(1)
-        update_money(@event,@money)
         @event.recorded=true
+        update_money(@event,@money)
         @event.save
         before_index
         redirect_to :root
