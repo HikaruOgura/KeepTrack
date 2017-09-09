@@ -63,7 +63,6 @@
                             <th>タイトル</th>
                             <th>金額</th>
                             <th>日時</th>
-                            <th>詳細</th>
                             <th>削除</th>
                         </tr>
                     </thead>
@@ -72,8 +71,7 @@
                         <tr>
                             <td><%= event.title %></td>
                             <td><%= event.amount %>円</td>
-                            <td><%= event.day %></td>
-                            <td><%= link_to "詳細を見る" ,event%></td>
+                            <td><%= event.day.strftime("%-m月%-d日") %></td>
                             <td><%= link_to "削除する" ,event,method: :delete,data:{confirm: "本当に削除しますか？"}%></td>
 
                         </tr>
@@ -92,7 +90,6 @@
                             <th>タイトル</th>
                             <th>金額</th>
                             <th>日時</th>
-                            <th>詳細</th>
                             <th>編集</th>
                             <th>削除</th>
                         </tr>
@@ -102,8 +99,7 @@
                         <tr>
                             <td><%= event.title %></td>
                             <td><%= event.amount %>円</td>
-                            <td><%= event.day %></td>
-                            <td><%= link_to "詳細を見る" ,event%></td>
+                            <td><%= event.day.strftime("%-m月%-d日") %></td>
                             <td><%= link_to "編集する" ,[:edit ,event]%></td>
                             <td><%= link_to "削除する" ,event,method: :delete,data:{confirm: "本当に削除しますか？"}%></td>
 
@@ -137,11 +133,10 @@
                     <tr>
                         <td><%= event.title %></td>
                         <td><%= event.amount %>円</td>
-                        <td><%= event.day %></td>
+                        <td><%= event.day.strftime("%-m月%-d日") %></td>
                         <td><%= link_to "編集する" ,[:edit ,event]%></td>
                         <td><%= link_to "記録する" ,"/record/#{event.id}",method: :post%></td>
                         <td><%= link_to "削除する" ,event,method: :delete,data:{confirm: "本当に削除しますか？"}%></td>
-
                     </tr>
                     <% end %>
                 </tbody>
