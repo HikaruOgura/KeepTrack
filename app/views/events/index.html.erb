@@ -57,7 +57,7 @@
                 <table id=recorded_event>
                     <thead>
                         <tr>
-                            <td  colspan="6" class="title">記録済みevent</th>
+                            <td  colspan="4" class="title">記録済みevent</th>
                         </tr>
                         <tr>
                             <th>タイトル</th>
@@ -67,14 +67,18 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <% count=0 %>
                         <% @events_recorded.each do |event| %>
+                        <% count=count+1 %>
                         <tr>
                             <td><%= event.title %></td>
                             <td><%= event.amount %>円</td>
                             <td><%= event.day.strftime("%-m月%-d日") %></td>
                             <td><%= link_to "削除する" ,event,method: :delete,data:{confirm: "本当に削除しますか？"}%></td>
-
                         </tr>
+                        <% if count==17 %>
+                            <% break %>
+                        <% end %>
                         <% end %>
                     </tbody>
                 </table>
@@ -84,7 +88,7 @@
                 <table id=unrecorded_event>
                     <thead>
                         <tr>
-                            <td colspan="6" class="title">予定event</th>
+                            <td colspan="5" class="title">予定event</th>
                         </tr>
                         <tr>
                             <th>タイトル</th>
