@@ -163,6 +163,11 @@
 
         <div class="modal-main" id="modify">
             <p class="message">所持金を修正しよう</p>
+            <%= form_for @money do |f| %>
+            wallet:<%= f.text_field :wallet %>
+            bank:<%= f.text_field :bank %>
+            <%= f.submit %>
+            <% end %>
             <p class="return">もどる</p>
         </div>
 
