@@ -22,7 +22,8 @@
                     <p class="bar_title">メニューバー</p>
                 </div>
                 <p><%= link_to "所持金の修正をする" ,[:edit ,@money] %></p>
-                <p id="create_event"><%= link_to "新しいeventを作成する" ,new_event_path %></p>
+
+                <p id="create_event">イベント新規作成</p>
             </div>
             <div class="balance">
                 <div class="bar">
@@ -119,8 +120,8 @@
             </div>
         </div>
 
-        <div id="modal-main">
-            <p id=message>予定日時を過ぎた未記録のeventが<%= @events_should_recorded.load.count %>件あります</p>
+        <div class="modal-main" id="suggest">
+            <p class="message">予定日時を過ぎた未記録のeventが<%= @events_should_recorded.load.count %>件あります</p>
             <table class="should">
                 <thead class="should">
                     <tr>
@@ -145,6 +146,18 @@
                     <% end %>
                 </tbody>
             </table>
+        </div>
+
+        <div class="modal-main" id="create">
+            <p class="message">新しいイベントをつくろう</p>
+            <%= form_for @new_event do |f| %>
+            タイトル:<%= f.text_field :title %>
+            金額:<%= f.text_field :amount %>
+            日時:<%= f.date_select :day,start_year:2016,end_year:Time.now.year,use_month_numbers: true %>
+            記録済み:<%= f.check_box :recorded %>
+            <%= f.submit %>
+            <% end %>
+            <p id="return">もどる</p>
         </div>
 
     </body>

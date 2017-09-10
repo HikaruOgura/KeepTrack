@@ -60,6 +60,7 @@ class EventsController < ApplicationController
 
     private
     def before_index
+        @new_event=Event.new
         @money=Money.find(1)
         @events_should_recorded=Event.where(day: Time.now.last_year .. Time.now).where(recorded: 0).order("day")
         gon.count=Event.where(day: Time.now.last_year .. Time.now).where(recorded: 0).load.count
