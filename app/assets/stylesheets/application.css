@@ -102,7 +102,7 @@ div.main{
     left: 10px;
     height:400px;
     width: 1150px;
-    background-color: rgb(96, 227, 228);
+    background-color: rgb(120, 228, 252);
     border: solid;
 
 }
@@ -126,11 +126,11 @@ div.main_right{
 }
 /*side*/
 div#side_menu{
-    background-color: rgb(107, 235, 219);
+    background-color: rgb(120, 228, 252);
     width: 250px;
-    height: 780px;
+    height: 650px;
     right: 10px;
-    top: 20px;
+    top: 150px;
     border: solid;
     position: absolute;
 }
@@ -140,40 +140,34 @@ div.menu_bar{
     width: 95%;
     margin: 0 auto;
     border: solid;
-    margin-bottom: 10%;
+    margin-bottom: 2%;
 }
 div.money_box{
     background-color: rgb(222, 129, 31);
     width: 95%;
     margin: 0 auto;
     border: solid;
-    margin-bottom: 10%;
+    margin-bottom: 2%;
 }
-div.balance{
-    background-color: rgb(63, 160, 186);
-    width: 95%;
-    margin: 0 auto;
-    border: solid;
-    margin-bottom: 10%;
-}
+
 div.last_month{
     background-color: white;
     width: 95%;
     margin: 0 auto;
-    margin-bottom: 10%;
+    margin-bottom: 2%;
     border: solid;
 }
 div.this_month{
     background-color: white;
     width: 95%;
     margin: 0 auto;
-    margin-bottom: 10%;
+    margin-bottom: 2%;
     border: solid;
 }
 /*footer*/
 div.footer{
     border: solid;
-    background-color: white;
+    background-color: rgb(120, 228, 252);
     position: absolute;
     top: 580px;
     left: 10px;

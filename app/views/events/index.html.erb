@@ -25,27 +25,23 @@
                 <p><%= link_to "所持金の修正をする" ,[:edit ,@money] %></p>
                 <p id="create_event">イベント新規作成</p>
             </div>
-            <div class="balance">
+            <div class="last_month">
                 <div class="bar">
-                    <p class="bar_title">収支</p>
+                    <p class="bar_title">先月の収支</p>
                 </div>
-                <div class="last_month">
-                    <div class="bar">
-                        <p class="bar_title">先月の収支</p>
-                    </div>
-                    <p>収入:<%= @LastMonth_income %>円</p>
-                    <p>支出:<%= -@LastMonth_spending %>円</p>
-                    <p>合計:<%= @LastMonth_income + @LastMonth_spending %>円</p>
-                </div>
-                <div class="this_month">
-                    <div class="bar">
-                        <p class="bar_title">今月の収支(予定)</p>
-                    </div>
-                    <p>収入:<%= @ThisMonth_income %>円</p>
-                    <p>支出:<%= -@ThisMonth_spending %>円</p>
-                    <p>合計:<%= @ThisMonth_income + @ThisMonth_spending %>円</p>
-                </div>
+                <p>収入:<%= @LastMonth_income %>円</p>
+                <p>支出:<%= -@LastMonth_spending %>円</p>
+                <p>合計:<%= @LastMonth_income + @LastMonth_spending %>円</p>
             </div>
+            <div class="this_month">
+                <div class="bar">
+                    <p class="bar_title">今月の収支(予定)</p>
+                </div>
+                <p>収入:<%= @ThisMonth_income %>円</p>
+                <p>支出:<%= -@ThisMonth_spending %>円</p>
+                <p>合計:<%= @ThisMonth_income + @ThisMonth_spending %>円</p>
+            </div>
+
 
 
         </div>
