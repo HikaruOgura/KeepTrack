@@ -140,29 +140,34 @@ div.menu_bar{
     width: 95%;
     margin: 0 auto;
     border: solid;
-    margin-bottom: 2%;
+    margin-bottom: 10%;
 }
 div.money_box{
     background-color: white;
     width: 95%;
     margin: 0 auto;
     border: solid;
-    margin-bottom: 2%;
+    margin-bottom: 10%;
 }
 
 div.last_month{
     background-color: white;
-    width: 95%;
+    width: 48%;
     margin: 0 auto;
     margin-bottom: 2%;
     border: solid;
+    position: relative;
+    left: -25%;
 }
 div.this_month{
     background-color: white;
-    width: 95%;
+    width: 48%;
     margin: 0 auto;
     margin-bottom: 2%;
     border: solid;
+    left: 25%;
+    top: -86%;
+    position: relative;
 }
 /*footer*/
 div.footer{
