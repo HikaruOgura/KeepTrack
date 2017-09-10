@@ -14,7 +14,44 @@
  *= require_self
  */
 body{
-    background-color: rgb(111, 246, 136);
+    background-color: #d6ebff;
+}
+h2{
+    background-color: #33b4ec ;
+    color: #fff;;
+    position: relative;
+    overflow: hidden;
+    top: -40px;
+    width: 1150px;
+    height: 120px;
+    font-size: 70px;
+    font-family: 'Bangers', cursive;
+    text-align: left;
+    padding-left: 10px;
+}
+h2:before{
+    background-color: #fff;
+    border-radius: 100px 100px 0 0;
+    content: '';
+    display: block;
+    opacity: 0.6;
+    position: absolute;
+    bottom: -1px;
+    left: 500px;
+    width: 200px;
+    height: 100px;
+}
+h2:after{
+    background-color: #fff;
+    border-radius: 50px 50px 0 0;
+    content: '';
+    opacity: 0.6;
+    position: absolute;
+    bottom: -1px;
+    left: 680px;
+    display: block;
+    width: 100px;
+    height: 50px;
 }
 /*table*/
 table{
@@ -35,11 +72,12 @@ td,th{
 
 }
 td.title{
-    background-color: rgb(61, 74, 69);
+    background-color: rgb(31, 60, 98);
     color:  white;
 }
-th{
-    background-color:rgb(147, 153, 146);
+td.midasi{
+    background-color:rgb(61, 90, 128);
+    color:  white;
 }
 
 thead.unrecorded,tbody.unrecorded{
@@ -60,7 +98,8 @@ tbody.should{
 /*main*/
 div.main{
     position: absolute;
-    left: 270px;
+    top: 150px;
+    left: 10px;
     height:400px;
     width: 1150px;
     background-color: rgb(96, 227, 228);
@@ -89,7 +128,9 @@ div.main_right{
 div#side_menu{
     background-color: rgb(107, 235, 219);
     width: 250px;
-    height: 790px;
+    height: 780px;
+    right: 10px;
+    top: 20px;
     border: solid;
     position: absolute;
 }
@@ -134,32 +175,36 @@ div.footer{
     border: solid;
     background-color: white;
     position: absolute;
-    top: 420px;
-    left: 270px;
+    top: 580px;
+    left: 10px;
     width: 1150px;
-    height: 380px;
+    height: 220px;
 }
 /*bar*/
 div.bar{
-    background-color: rgb(61, 74, 69);
+    background-color: rgb(31, 60, 98);
 }
 p.bar_title{
     text-align: center;
     color: white;
     margin-top: 0px;
 }
+
 /*modal*/
 
 .modal-main {
     display: none;
     width: 700px;
     height: 300px;
-    margin: 0;
-    padding: 0;
     background-color: #ffffff;
     color: #666666;
     position:fixed;
     z-index: 2;
+    padding: 0.2em 0.5em;
+    margin: 2em 0;
+    background: #d6ebff;
+    box-shadow: 0px 0px 0px 10px #d6ebff;
+    border: dashed 2px white;
 }
 /* モーダル 背景エリア */
 .modal-bg {
