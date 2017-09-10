@@ -158,7 +158,16 @@
 
         <div class="modal-main" id="baito">
             <p class="message">かてきょイベントを作ろう</p>
-            
+            <%= form_tag("/baito") do %>
+              <%= label_tag(:times15, "1.5時間:") %>
+              <%= text_field_tag(:times15,8)%>回
+          </br>
+              <%= label_tag(:times20, "2.0時間:") %>
+              <%= text_field_tag(:times20,0) %>回
+          </br>
+              最終勤務日:<%= date_select(:date, "hoge",use_month_numbers: true) %>
+              <%= submit_tag("ぼたん") %>
+            <% end %>
             <p class="return">もどる</p>
         </div>
 

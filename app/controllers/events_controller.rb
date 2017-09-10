@@ -58,7 +58,13 @@ class EventsController < ApplicationController
         redirect_to :root
     end
     def baito
-
+        @event=Event.new
+        @event.title="かてきょ"
+        @event.amount=(params[:times15].to_i*1.5+params[:times20].to_i*2)*2500+(params[:times15].to_i+params[:times20].to_i)*440
+        @event.day=Date.new(params[:date]["hoge(1i)"].to_i,params[:date]["hoge(2i)"].to_i,params[:date]["hoge(3i)"].to_i)
+        @event.save
+        before_index
+        redirect_to :root
     end
 
     private
