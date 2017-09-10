@@ -57,6 +57,9 @@ class EventsController < ApplicationController
         before_index
         redirect_to :root
     end
+    def baito
+
+    end
 
     private
     def before_index
