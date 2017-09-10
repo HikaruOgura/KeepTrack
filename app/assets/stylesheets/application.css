@@ -22,7 +22,7 @@ h2{
     position: relative;
     overflow: hidden;
     top: -40px;
-    width: 1150px;
+    width: 1410px;
     height: 120px;
     font-size: 70px;
     font-family: 'Bangers', cursive;
@@ -100,7 +100,7 @@ div.main{
     position: absolute;
     top: 150px;
     left: 10px;
-    height:400px;
+    height:410px;
     width: 1150px;
     background-color: rgb(120, 228, 252);
     border: solid;
@@ -136,14 +136,14 @@ div#side_menu{
 }
 
 div.menu_bar{
-    background-color: rgb(171, 247, 26);
+    background-color: white;
     width: 95%;
     margin: 0 auto;
     border: solid;
     margin-bottom: 2%;
 }
 div.money_box{
-    background-color: rgb(222, 129, 31);
+    background-color: white;
     width: 95%;
     margin: 0 auto;
     border: solid;
