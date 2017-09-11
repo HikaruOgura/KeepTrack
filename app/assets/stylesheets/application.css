@@ -220,3 +220,37 @@ p.bar_title{
 .message{
     text-align: center;
 }
+.link::after,
+.link::before {
+  display: block;
+  content: '';
+  position: absolute;
+}
+.link::after {
+  top: 9px;
+  left: -1em;
+  width: 6px;
+  height: 6px;
+  border-right: 2px solid rgb(86, 189, 233);
+  border-bottom: 2px solid rgb(86, 189, 233);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+.link::before {
+  top: 12px;
+  left: -1.025em;
+  width: 8px;
+  height: 2px;
+  background-color: rgb(86, 189, 233);
+}
+
+.link{
+    background: linear-gradient(transparent 70%, rgb(86, 189, 233) 0%);
+    position: relative;
+    margin-left: 15%;
+    margin-bottom: 5%;
+    margin-top: 5%;
+    text-align: center;
+    display:inline-block;
+
+}
