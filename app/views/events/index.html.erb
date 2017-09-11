@@ -25,6 +25,7 @@
                 <p id="modify_link">・所持金の修正</p>
                 <p id="create_link">・イベント新規作成</p>
                 <p id="baito_link">・かてきょイベント作成</p>
+                <p id="phone_link">・スマホ代イベント作成</p>
             </div>
 
         </div>
@@ -181,6 +182,14 @@
             <p class="return">もどる</p>
         </div>
 
-
+        <div class="modal-main" id="phone">
+            <p class="message">スマホ代引き落としイベント作成</p>
+            <%= form_tag("/phone") do %>
+              <%= label_tag(:amount,"") %>
+              <%= text_field_tag(:amount,-10000)%>円
+              <%= submit_tag("ぼたん") %>
+            <% end %>
+            <p class="return">もどる</p>
+        </div>
     </body>
 </html>

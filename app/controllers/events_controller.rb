@@ -66,6 +66,16 @@ class EventsController < ApplicationController
         before_index
         redirect_to :root
     end
+    def phone
+        @event=Event.new
+        @event.title="スマホ代"
+        @event.debit=true
+        @event.amount=params[:amount]
+        @event.day=Date.new(Time.now.year,Time.now.month,27)
+        @event.save
+        before_index
+        redirect_to :root
+    end
 
     private
     def before_index
