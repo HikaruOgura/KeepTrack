@@ -19,11 +19,11 @@
                 </div>
                 <div id="wallet">
                     <%= image_tag "wallet.jpg" , :size => '45x45' ,:class => "image" %>
-                    <div class="money_text"><span class="strong"><%= number_to_currency(@money.wallet, :unit => "￥",:precision => 0) %></span></div>
+                    <div class="money_text"><span class="strong"><%= number_to_currency(@money.wallet, :unit => "￥",:precision => 0, :negative_format => "%u-%n") %></span></div>
                 </div>
                 <div id="bank">
                     <%= image_tag "bank.jpg"  , :size => '45x45',:class => "image" %>
-                    <div class="money_text"> <span class="strong"><%= number_to_currency(@money.bank, :unit => "￥",:precision => 0) %></span></div>
+                    <div class="money_text"> <span class="strong"><%= number_to_currency(@money.bank, :unit => "￥",:precision => 0, :negative_format => "%u-%n") %></span></div>
                 </div>
 
             </div>
@@ -44,14 +44,14 @@
 
                 <div id="income">
                     <%= image_tag "income.png" , :size => '45x45' ,:class => "image" %>
-                    <div class="money_text"><span class="strong"><%= number_to_currency(@ThisMonth_income, :unit => "￥", :precision => 0) %></span></div>
+                    <div class="money_text"><span class="strong"><%= number_to_currency(@ThisMonth_income, :unit => "￥", :precision => 0, :negative_format => "%u-%n") %></span></div>
                 </div>
                 <div id="spending">
                     <%= image_tag "spending.jpg"  , :size => '45x45',:class => "image" %>
-                    <div class="money_text"><span class="strong"><%= number_to_currency(-@ThisMonth_spending, :unit => "￥",:precision => 0) %></span></div>
+                    <div class="money_text"><span class="strong"><%= number_to_currency(-@ThisMonth_spending, :unit => "￥",:precision => 0, :negative_format => "%u-%n") %></span></div>
                 </div>
                 <div id="sum">
-                    <div class="money_text"><span class="strong"><%= number_to_currency(@ThisMonth_income + @ThisMonth_spending, :unit => "￥",:precision => 0) %></span></div>
+                    <div class="money_text"><span class="strong"><%= number_to_currency(@ThisMonth_income + @ThisMonth_spending, :unit => "￥",:precision => 0, :negative_format => "%u-%n") %></span></div>
                 </div>
             </div>
 
@@ -81,7 +81,7 @@
                         <% count=count+1 %>
                         <tr>
                             <td><%= event.title %></td>
-                            <td><%= event.amount %>円</td>
+                            <td class="amount"><%= number_to_currency(event.amount, :unit => "￥", :precision => 0, :negative_format => "%u-%n") %></td>
                             <td><%= event.day.strftime("%-m月%-d日") %></td>
                             <td><%= link_to "削除する" ,event,method: :delete,data:{confirm: "本当に削除しますか？"}%></td>
                         </tr>
@@ -111,7 +111,7 @@
                         <% @events_unrecorded.each do |event| %>
                         <tr>
                             <td><%= event.title %></td>
-                            <td><%= event.amount %>円</td>
+                            <td class="amount"><%= number_to_currency(event.amount, :unit => "￥", :precision => 0, :negative_format => "%u-%n") %></td>
                             <td><%= event.day.strftime("%-m月%-d日") %></td>
                             <td><%= link_to "編集する" ,[:edit ,event]%></td>
                             <td><%= link_to "削除する" ,event,method: :delete,data:{confirm: "本当に削除しますか？"}%></td>
@@ -141,7 +141,7 @@
                     <% @events_should_recorded.each do |event| %>
                     <tr>
                         <td><%= event.title %></td>
-                        <td><%= event.amount %>円</td>
+                        <td class="amount"><%= number_to_currency(event.amount, :unit => "￥", :precision => 0, :negative_format => "%u-%n") %></td>
                         <td><%= event.day.strftime("%-m月%-d日") %></td>
                         <td><%= link_to "編集する" ,[:edit ,event]%></td>
                         <td><%= link_to "記録する" ,"/record/#{event.id}",method: :post%></td>
@@ -182,8 +182,8 @@
         <div class="modal-main" id="modify">
             <p class="message">所持金を修正しよう</p>
             <%= form_for @money do |f| %>
-            wallet:<%= f.text_field :wallet %>
-            bank:<%= f.text_field :bank %>
+            手持ち:<%= f.text_field :wallet %>
+            銀行:<%= f.text_field :bank %>
             <%= f.submit %>
             <% end %>
             <p class="return">もどる</p>
