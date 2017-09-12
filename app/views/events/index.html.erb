@@ -19,11 +19,11 @@
                 </div>
                 <div id="wallet">
                     <%= image_tag "wallet.jpg" , :size => '45x45' ,:class => "image" %>
-                    <div class="money_text"><span class="strong"><%= @money.wallet %></span>円</div>
+                    <div class="money_text"><span class="strong"><%= number_to_currency(@money.wallet, :unit => "￥",:precision => 0) %></span></div>
                 </div>
                 <div id="bank">
                     <%= image_tag "bank.jpg"  , :size => '45x45',:class => "image" %>
-                    <div class="money_text"> <span class="strong"><%= @money.bank %></span>円</div>
+                    <div class="money_text"> <span class="strong"><%= number_to_currency(@money.bank, :unit => "￥",:precision => 0) %></span></div>
                 </div>
 
             </div>
@@ -44,14 +44,14 @@
 
                 <div id="income">
                     <%= image_tag "income.png" , :size => '45x45' ,:class => "image" %>
-                    <div class="money_text"><span class="strong"><%= @ThisMonth_income %></span>円</div>
+                    <div class="money_text"><span class="strong"><%= number_to_currency(@ThisMonth_income, :unit => "￥", :precision => 0) %></span></div>
                 </div>
                 <div id="spending">
                     <%= image_tag "spending.jpg"  , :size => '45x45',:class => "image" %>
-                    <div class="money_text"><span class="strong"><%= -@ThisMonth_spending %></span>円</div>
+                    <div class="money_text"><span class="strong"><%= number_to_currency(-@ThisMonth_spending, :unit => "￥",:precision => 0) %></span></div>
                 </div>
                 <div id="sum">
-                    <div class="money_text"><span class="strong"><%= @ThisMonth_income + @ThisMonth_spending %></span>円</div>
+                    <div class="money_text"><span class="strong"><%= number_to_currency(@ThisMonth_income + @ThisMonth_spending, :unit => "￥",:precision => 0) %></span></div>
                 </div>
             </div>
 

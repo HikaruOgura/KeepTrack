@@ -151,7 +151,7 @@ div.money_box{
     position: relative;
 }
 .strong{
-    font-size: 30px;
+    font-size: 20px;
 }
 .image{
     position:absolute;
@@ -168,11 +168,11 @@ div.money_box{
 }
 #wallet{
     position: relative;
-    margin-bottom: 5%;
+    margin-bottom: 10%;
 }
 #bank{
     position: relative;
-    margin-bottom: 5%;
+    margin-bottom: 10%;
 }
 
 div.this_month{
@@ -189,13 +189,14 @@ div.this_month{
     width: 95%;
     border-bottom: solid;
     margin: auto;
+    margin-bottom: 10%;
 }
 #income{
     position: relative;
     margin-bottom: 5%;
     width: 95%;
     margin: auto;
-    margin-bottom: 2%;
+    margin-bottom: 10%;
 }
 #sum{
     position: relative;
