@@ -148,8 +148,32 @@ div.money_box{
     margin: 0 auto;
     border: solid;
     margin-bottom: 10%;
+    position: relative;
 }
-
+.strong{
+    font-size: 30px;
+}
+.image{
+    position:absolute;
+    left: 10px;
+    top: 0px;
+}
+.money_text{
+    position:relative;
+    width: 60%;
+    height: 60%;
+    right: -30%;
+    top: -30%;
+    text-align: right;
+}
+div#wallet{
+    position: relative;
+    margin-bottom: 5%;
+}
+div#bank{
+    position: relative;
+    margin-bottom: 5%;
+}
 div.last_month{
     background-color: white;
     width: 48%;
@@ -249,7 +273,7 @@ p.bar_title{
     position: relative;
     margin-left: 15%;
     margin-bottom: 5%;
-    margin-top: 5%;
+    margin-top: 0%;
     text-align: center;
     display:inline-block;
 
