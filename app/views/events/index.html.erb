@@ -37,6 +37,15 @@
                 <p id="phone_link" class="link">スマホ代イベント作成</p>
             </div>
 
+            <div class="this_month">
+                <div class="bar">
+                    <p class="bar_title">今月の収支(予定)</p>
+                </div>
+                <p>収入:<%= @ThisMonth_income %>円</p>
+                <p>支出:<%= -@ThisMonth_spending %>円</p>
+                <p>合計:<%= @ThisMonth_income + @ThisMonth_spending %>円</p>
+            </div>
+
         </div>
         <div class="main">
             <div class="bar">
@@ -66,7 +75,7 @@
                             <td><%= event.day.strftime("%-m月%-d日") %></td>
                             <td><%= link_to "削除する" ,event,method: :delete,data:{confirm: "本当に削除しますか？"}%></td>
                         </tr>
-                        <% if count==10 %>
+                        <% if count==18 %>
                             <% break %>
                         <% end %>
                         <% end %>
@@ -103,28 +112,7 @@
                 </table>
             </div>
         </div>
-        <div class="footer">
-            <div class="bar">
-                <p class="bar_title">footer</p>
-            </div>
-            <div class="last_month">
-                <div class="bar">
-                    <p class="bar_title">先月の収支</p>
-                </div>
-                <p>収入:<%= @LastMonth_income %>円</p>
-                <p>支出:<%= -@LastMonth_spending %>円</p>
-                <p>合計:<%= @LastMonth_income + @LastMonth_spending %>円</p>
-            </div>
-            <div class="this_month">
-                <div class="bar">
-                    <p class="bar_title">今月の収支(予定)</p>
-                </div>
-                <p>収入:<%= @ThisMonth_income %>円</p>
-                <p>支出:<%= -@ThisMonth_spending %>円</p>
-                <p>合計:<%= @ThisMonth_income + @ThisMonth_spending %>円</p>
-            </div>
 
-        </div>
 
         <div class="modal-main" id="suggest">
             <p class="message">予定日時を過ぎた未記録のeventが<%= @events_should_recorded.load.count %>件あります</p>

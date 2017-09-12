@@ -85,7 +85,7 @@ thead.unrecorded,tbody.unrecorded{
 }
 tbody.unrecorded{
     overflow-y:scroll;
-    height:284px;
+    height:515px;
 }
 thead.should,tbody.should{
     display:block;
@@ -100,7 +100,7 @@ div.main{
     position: absolute;
     top: 150px;
     left: 10px;
-    height:410px;
+    height:650px;
     width: 1150px;
     background-color: rgb(120, 228, 252);
     border: solid;
@@ -166,43 +166,24 @@ div.money_box{
     top: -30%;
     text-align: right;
 }
-div#wallet{
+#wallet{
     position: relative;
     margin-bottom: 5%;
 }
-div#bank{
+#bank{
     position: relative;
     margin-bottom: 5%;
 }
-div.last_month{
-    background-color: white;
-    width: 48%;
-    margin: 0 auto;
-    margin-bottom: 2%;
-    border: solid;
-    position: relative;
-    left: -25%;
-}
+
 div.this_month{
     background-color: white;
-    width: 48%;
+    width: 95%;
     margin: 0 auto;
     margin-bottom: 2%;
     border: solid;
-    left: 25%;
-    top: -86%;
     position: relative;
 }
-/*footer*/
-div.footer{
-    border: solid;
-    background-color: rgb(120, 228, 252);
-    position: absolute;
-    top: 580px;
-    left: 10px;
-    width: 1150px;
-    height: 220px;
-}
+
 /*bar*/
 div.bar{
     background-color: rgb(31, 60, 98);
