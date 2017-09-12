@@ -66,12 +66,13 @@
                 <table class="recorded">
                     <thead class="recorded">
                         <tr>
-                            <td  colspan="4" class="title">記録済みevent</th>
+                            <td  colspan="5" class="title">記録済みevent</th>
                         </tr>
                         <tr>
                             <td class="midasi">タイトル</td>
                             <td class="midasi">金額</td>
                             <td class="midasi">日時</td>
+                            <td class="midasi">編集</td>
                             <td class="midasi">削除</td>
                         </tr>
                     </thead>
@@ -83,6 +84,7 @@
                             <td><%= event.title %></td>
                             <td class="amount"><%= number_to_currency(event.amount, :unit => "￥", :precision => 0, :negative_format => "%u-%n") %></td>
                             <td><%= event.day.strftime("%-m月%-d日") %></td>
+                            <td><%= link_to "編集する" ,[:edit ,event]%></td>
                             <td><%= link_to "削除する" ,event,method: :delete,data:{confirm: "本当に削除しますか？"}%></td>
                         </tr>
                         <% if count==18 %>

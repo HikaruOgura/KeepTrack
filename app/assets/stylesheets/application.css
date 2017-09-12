@@ -83,11 +83,15 @@ td.amount{
     text-align: right;
 }
 
-thead.unrecorded,tbody.unrecorded{
+thead.recorded,tbody.recorded,thead.unrecorded,tbody.unrecorded{
     display:block;
 }
 tbody.unrecorded{
     overflow-y:scroll;
+    height:515px;
+}
+
+tbody.recorded{
     height:515px;
 }
 thead.should,tbody.should{
