@@ -41,10 +41,20 @@
                 <div class="bar">
                     <p class="bar_title">今月の収支(予定)</p>
                 </div>
-                <p>収入:<%= @ThisMonth_income %>円</p>
-                <p>支出:<%= -@ThisMonth_spending %>円</p>
-                <p>合計:<%= @ThisMonth_income + @ThisMonth_spending %>円</p>
+
+                <div id="income">
+                    <%= image_tag "income.png" , :size => '45x45' ,:class => "image" %>
+                    <div class="money_text"><span class="strong"><%= @ThisMonth_income %></span>円</div>
+                </div>
+                <div id="spending">
+                    <%= image_tag "spending.jpg"  , :size => '45x45',:class => "image" %>
+                    <div class="money_text"><span class="strong"><%= -@ThisMonth_spending %></span>円</div>
+                </div>
+                <div id="sum">
+                    <div class="money_text"><span class="strong"><%= @ThisMonth_income + @ThisMonth_spending %></span>円</div>
+                </div>
             </div>
+
 
         </div>
         <div class="main">

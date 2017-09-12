@@ -183,6 +183,27 @@ div.this_month{
     border: solid;
     position: relative;
 }
+#spending{
+    position: relative;
+    margin-bottom: 5%;
+    width: 95%;
+    border-bottom: solid;
+    margin: auto;
+}
+#income{
+    position: relative;
+    margin-bottom: 5%;
+    width: 95%;
+    margin: auto;
+    margin-bottom: 2%;
+}
+#sum{
+    position: relative;
+    margin-bottom: 5%;
+    width: 95%;
+    margin: auto;
+    margin-bottom: 2%;
+}
 
 /*bar*/
 div.bar{
