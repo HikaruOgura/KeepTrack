@@ -87,12 +87,11 @@ thead.recorded,tbody.recorded,thead.unrecorded,tbody.unrecorded{
     display:block;
 }
 tbody.unrecorded{
-    overflow-y:scroll;
-    height:515px;
+    height:520px;
 }
 
 tbody.recorded{
-    height:515px;
+    height:520px;
 }
 thead.should,tbody.should{
     display:block;
