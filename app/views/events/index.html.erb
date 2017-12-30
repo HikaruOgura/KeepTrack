@@ -162,7 +162,7 @@
                 </br></br>
                 金額:<%= f.text_field :amount %>
                 </br></br>
-                日時:<%= f.date_select :day,start_year:2016,end_year:Time.now.year,use_month_numbers: true %>
+                日時:<%= f.date_select :day,start_year:Time.now.year,end_year:Time.now.year+2,use_month_numbers: true %>
                 </br></br>
                 記録済み:<%= f.check_box :recorded %>
                 </br></br>
