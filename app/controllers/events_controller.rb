@@ -9,6 +9,9 @@ class EventsController < ApplicationController
 
     def edit
         @event=Event.find(params[:id])
+        nowTime=Time.now
+        eventTime=@event.day
+        @isOver=nowTime>eventTime
     end
 
     def update
