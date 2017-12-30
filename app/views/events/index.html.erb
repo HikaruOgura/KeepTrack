@@ -160,7 +160,7 @@
                 <%= form_for @new_event do |f| %>
                 タイトル:<%= f.text_field :title %>
                 </br></br>
-                金額:<%= f.text_field :amount %>
+                金額:<%= f.text_field :amount ,:value => "-"%>
                 </br></br>
                 日時:<%= f.date_select :day,start_year:Time.now.year,end_year:Time.now.year+2,use_month_numbers: true %>
                 </br></br>
