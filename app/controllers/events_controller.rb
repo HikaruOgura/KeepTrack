@@ -80,7 +80,14 @@ class EventsController < ApplicationController
     private
     def before_index
         @new_event=Event.new
-        @money=Money.find(1)
+        @money=Money.find_by(id:1)
+        if @money==nil
+            @money=Money.new
+            @money.id=1
+            @money.wallet=100000
+            @money.bank=100000
+            @money.save
+        end
         @events_should_recorded=Event.where(day: Time.now.last_year .. Time.now).where(recorded: 0).order("day")
         gon.count=Event.where(day: Time.now.last_year .. Time.now).where(recorded: 0).load.count
         @events_unrecorded=Event.where(recorded: 0).order("day")
