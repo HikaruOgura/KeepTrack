@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
     root "events#index"
+    get  "login" =>"users#index"
     post "record/:id" => "events#record"
     post "baito" =>"events#baito"
     post "phone" =>"events#phone"
