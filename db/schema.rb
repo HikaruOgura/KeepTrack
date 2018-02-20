@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170903140744) do
+ActiveRecord::Schema.define(version: 20180220140245) do
 
   create_table "events", force: :cascade do |t|
     t.string   "title",      default: "無題",  null: false
@@ -21,11 +21,19 @@ ActiveRecord::Schema.define(version: 20170903140744) do
     t.datetime "updated_at",                 null: false
     t.boolean  "recorded",   default: false
     t.boolean  "debit",      default: false
+    t.integer  "user_id"
   end
 
   create_table "money", force: :cascade do |t|
     t.integer  "wallet",     null: false
     t.integer  "bank",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
